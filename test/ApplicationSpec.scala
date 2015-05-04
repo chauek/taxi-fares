@@ -26,12 +26,12 @@ class ApplicationSpec extends Specification {
       contentAsString(home) must contain ("{\"response\":\"index\"}")
     }
 
-    "render the new fare page" in new WithApplication{
-      val home = route(FakeRequest(GET, "/fare")).get
+    "render the new ride page" in new WithApplication{
+      val home = route(FakeRequest(GET, "/rides/51.501805/-0.174544")).get
 
       status(home) must equalTo(OK)
       contentType(home) must beSome.which(_ == "application/json")
-      contentAsString(home) must contain ("{\"fareId\":\"")
+      contentAsString(home) must contain ("{\"rideId\":\"")
     }
   }
 }

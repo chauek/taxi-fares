@@ -3,6 +3,6 @@
 # ~~~~
 
 # Home page
-GET     /                  @controllers.Application.index
-GET     /fare              @controllers.Application.startTracking
-PUT     /fare/:fareId     @controllers.Application.addFarePoint(fareId: String)
+GET     /                           @controllers.Application.index
+GET     /rides/:lat/:lon            @controllers.Application.startTracking(lat: Double, lon: Double)
+PUT     /rides/:rideId/:lat/:lon    @controllers.Application.addRidePoint(rideId: String, lat: Double, lon: Double)
