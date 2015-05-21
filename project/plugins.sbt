@@ -16,6 +16,6 @@ addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.3.8")
 //addSbtPlugin("com.typesafe.sbt" % "sbt-digest" % "1.0.0")
 //
 //addSbtPlugin("com.typesafe.sbt" % "sbt-mocha" % "1.0.0")
-
-// ScalaTest
-//addSbtPlugin("org.scalatestplus" % "play_2.10" % "1.0.0")
+//
+//// ScalaTest
+//addSbtPlugin("org.scalatestplus" % "play_2.10" % "1.2.0")
