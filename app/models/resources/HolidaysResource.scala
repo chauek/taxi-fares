@@ -6,10 +6,11 @@ import scala.io.Source
 import java.io.File
 
 object HolidaysResource {
-  val resourceFile = "holidays.txt"
+  val resourceFile = ConfigFactory.load().getString("files.db.holidays")
+  val resourceFilePath = ConfigFactory.load().getString("files.db.path")
 
   def isAHoliday(dateTime: DateTime): Boolean = {
-    val file =new File(ConfigFactory.load().getString("files.db.path") + File.separator + resourceFile)
+    val file =new File(resourceFilePath + File.separator + resourceFile)
 
     if (file.exists()) {
       val iterator = Source.fromFile(file.toString).getLines()

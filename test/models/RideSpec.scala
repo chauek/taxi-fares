@@ -22,7 +22,7 @@ class RideSpec extends PlaySpec {
       r.points.length mustBe 4
     }
     "have 2 break points" in {
-              Ride.addRidePoint(new RidePoint(testRideId, 51.5229021, -0.0527106, Instant.parse("2015-01-02T19:50:00Z").getEpochSecond()*1000))
+      Ride.addRidePoint(new RidePoint(testRideId, 51.5229021, -0.0527106, Instant.parse("2015-01-02T19:50:00Z").getEpochSecond()*1000))
       val r = Ride.addRidePoint(new RidePoint(testRideId, 51.5329021, -0.1027106, Instant.parse("2015-01-02T22:10:00Z").getEpochSecond()*1000))
       r.points.length mustBe 8
     }

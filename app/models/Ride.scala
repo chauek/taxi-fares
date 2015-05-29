@@ -11,6 +11,11 @@ class Ride(val points: List[RidePoint]) {
 
 
 object Ride {
+  /**
+   * Earth radius in m
+   * @return Int
+   */
+  private def earthRadius = 6371000
 
   def create(ridePoint: RidePoint) : Ride = {
     Await.result(RidesDAO.addRidePoint(ridePoint), 5 seconds)
@@ -85,12 +90,6 @@ object Ride {
   }
 
   private def toRad(d: Double): Double = d * Pi / 180
-
-  /**
-   * Earth radius in m
-   * @return Int
-   */
-  private def earthRadius = 6371000
 
   /**
    *

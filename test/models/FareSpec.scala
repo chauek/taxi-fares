@@ -139,13 +139,11 @@ class FareSpec extends PlaySpec {
       cost mustBe 3.20
     }
     "have fare cost above minimal for two points changing tariff 3; counted by distance (T16)" in {
-      //println();println();println("have fare cost above minimal for two points changing tariff 3; time is less than minimal")
       val tariffHist = List(
         new TariffRidePoint("T3", 9671.9, 96719),
         new TariffRidePoint("T1", 30, 300)
       )
       val cost = Fare.calcFareByTariffRidePoints(tariffHist)
-      //println(cost);println();println()
       cost mustBe 25.60
     }
 
