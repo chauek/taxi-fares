@@ -27,17 +27,30 @@
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
+        <script src="js/jquery-1.7.1.min.js"></script>
+        <!--<script src="js/jquery.mobile-1.1.0.min.js"></script>-->
+        <title>Taxi-Fares</title>
     </head>
     <body>
         <div class="app">
             <h1>Taxi-fares</h1>
             <div id="deviceready" class="blink">
                 <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready :D</p>
+                <p class="event received">Device is Ready</p>
             </div>
-            <div>
-                <label for="host">Host:</label><input id="host" type="text" value="http://192.168.0.9:9000" /><button>Start</button>
+            <div id="taxi-fare-connect-form">
+                <div id="ride-info">
+                    <p class="cost-row">£ <span id="cost">0.00</span></p>
+                    <p class="dist-row">dist: <span id="dist">0</span> m</p>
+                    <p class="time-row">time: <span id="time">0</span> s</p>
+                </div>
+                <div>
+                    <label for="host">Host:</label>
+                    <input id="host" type="text" value="http://10.42.0.1:9000" />
+                    <button id="start-button">Start</button>
+                    <button id="stop-button">Stop</button>
+                </div>
+                <div id="ride-log"></div>
             </div>
         </div>
         <script type="text/javascript" src="cordova.js"></script>

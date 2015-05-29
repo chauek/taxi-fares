@@ -22,7 +22,7 @@ class RidesControllerSpec extends PlaySpec with Results {
   def addRidePointRequest(requestType: String, uuid: String, lat: Double, lon: Double, date: String): String = {
     val controller = new TestController(uuid, Instant.parse(date).getEpochSecond() * 1000)
     val request = FakeRequest(requestType, "/rides")
-    val result: Future[Result] = if (requestType == "GET") controller.startTracking(lat, lon).apply(request)
+    val result: Future[Result] = if (requestType == "START") controller.startTracking(lat, lon).apply(request)
     else controller.addRidePoint(uuid, lat, lon).apply(request)
     contentAsString(result)
   }
@@ -37,13 +37,13 @@ class RidesControllerSpec extends PlaySpec with Results {
   }
   "RidesController#startTracking" should {
     "have valid response" in {
-      addRidePointRequest("GET", "_testForRidesController", 51.4915756, -0.2031735, "2015-01-01T19:00:00Z") matches
+      addRidePointRequest("START", "_testForRidesController", 51.4915756, -0.2031735, "2015-01-01T19:00:00Z") matches
         """\{\"rideId\":\"([^\"]*)\"\}"""
     }
   }
   "RidesController#addRidePoint" should {
     "have valid response" in {
-      addRidePointRequest("PUT", "_testForRidesController", 51.5029021, -0.1527106, "2015-01-01T19:01:00Z") mustBe
+      addRidePointRequest("ADD", "_testForRidesController", 51.5029021, -0.1527106, "2015-01-01T19:01:00Z") mustBe
         Json.obj(
           "response" -> "OK",
           "distance" -> 3713,
@@ -52,8 +52,8 @@ class RidesControllerSpec extends PlaySpec with Results {
         ).toString()
     }
     "have valid distace at 4 points" in {
-      addRidePointRequest("PUT", "_testForRidesController", 51.5129021, -0.1027106, "2015-01-01T19:02:00Z")
-      addRidePointRequest("PUT", "_testForRidesController", 51.5229021, -0.0527106, "2015-01-01T19:03:00Z") mustBe
+      addRidePointRequest("ADD", "_testForRidesController", 51.5129021, -0.1027106, "2015-01-01T19:02:00Z")
+      addRidePointRequest("ADD", "_testForRidesController", 51.5229021, -0.0527106, "2015-01-01T19:03:00Z") mustBe
         Json.obj(
           "response" -> "OK",
           "distance" -> 10982,
@@ -62,8 +62,8 @@ class RidesControllerSpec extends PlaySpec with Results {
         ).toString()
     }
     "have valid distace at 6 points with tariff border point" in { //  it should add tariff border as 6th point at 20:00"
-      addRidePointRequest("PUT", "_testForRidesController", 51.5329021, -0.1027106, "2015-01-01T19:04:00Z")
-      addRidePointRequest("PUT", "_testForRidesController", 51.5429021, -0.0527106, "2015-01-01T20:01:00Z") mustBe
+      addRidePointRequest("ADD", "_testForRidesController", 51.5329021, -0.1027106, "2015-01-01T19:04:00Z")
+      addRidePointRequest("ADD", "_testForRidesController", 51.5429021, -0.0527106, "2015-01-01T20:01:00Z") mustBe
         Json.obj(
           "response" -> "OK",
           "distance" -> 18247,

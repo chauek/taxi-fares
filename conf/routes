@@ -5,4 +5,4 @@
 # Home page
 GET     /                           @controllers.Application.index
 GET     /rides/:lat/:lon            @controllers.Application.startTracking(lat: Double, lon: Double)
-PUT     /rides/:rideId/:lat/:lon    @controllers.Application.addRidePoint(rideId: String, lat: Double, lon: Double)
+GET     /rides/:rideId/:lat/:lon    @controllers.Application.addRidePoint(rideId: String, lat: Double, lon: Double)
