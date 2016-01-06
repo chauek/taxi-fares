@@ -14,18 +14,14 @@ Mobile application created in phonegap is showing results and updates server abo
 * Decided: when minimal fare is reached but it comes back into minimal fare because of tariff change we do not get back 
   to minimal fare but keep counting medium fare (please check test cases FareSpec: T15 and T16)
 
+## Requirements
+
+* Java 8
 
 ## Running server
 
 ```
 ./activator run
-```
-
-## Running phonegap client
- 
-Go to ```phonegap/taxi-fare-client``` dir and run 
-```
-phonegap run
 ```
 
 ## Running server tests
